@@ -1,4 +1,4 @@
-from langchain.chains import create_histore_aware_retriever, create_retrieval_chain
+from langchain.chains import create_history_aware_retriever, create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_openai import ChatOpenAI
@@ -18,7 +18,7 @@ def get_rag_chain() -> RunnableWithMessageHistory:
     # Create a retriever from the vector store
     retriever = get_vectorstore().as_retriever()
     llm = ChatOpenAI(model_name=OPENAI_MODEL, temperature=OPENAI_TEMPERATURE)
-    history_aware_chain = create_histore_aware_retriever(
+    history_aware_chain = create_history_aware_retriever(
         llm, retriever, contextualize_prompt
     )
     question_answer_chain = create_stuff_documents_chain(llm=llm, prompt=qa_prompt)
