@@ -1,7 +1,7 @@
 [project]
 name = "whaibot"
 version = "0.1.0"
-description = "Add your description here"
+description = "A WhatsApp bot using LangChain"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -15,4 +15,7 @@ dependencies = [
     "requests>=2.32.3",
     "uvicorn>=0.34.0",
     "redis>=5.2.1",
+    "langchain-groq>=0.3.2",
+    "sentence-transformers>=2.6.0",
+    "langchain-huggingface>=0.0.5",
 ]

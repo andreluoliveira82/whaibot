@@ -4,11 +4,20 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-# Instale dependências do sistema e Python
+# install uv 
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+ENV PATH="/app/.venv/bin:$PATH"
+
+# create virtual environment
+RUN uv venv
+
+# Install dependencies from requirements.txt
 RUN apt-get update && \
     apt-get install -y --no-install-recommends && \
     pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+    uv pip install --no-cache-dir -r requirements.txt
+    #pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
