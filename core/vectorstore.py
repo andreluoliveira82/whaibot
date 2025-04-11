@@ -6,7 +6,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 # from langchain_openai import OpenAIEmbeddings
 
-from settings import VECTOR_STORE_PATH, RAG_FILES_DIR
+from core.settings import VECTOR_STORE_PATH, RAG_FILES_DIR
 
 
 def load_documents() -> list:

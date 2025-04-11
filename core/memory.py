@@ -1,6 +1,6 @@
 from langchain_community.chat_message_histories import RedisChatMessageHistory
 
-from settings import REDIS_URL
+from core.settings import REDIS_URL
 
 def get_session_history(session_id: str):
     """

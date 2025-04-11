@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 
-from chains import get_conversational_rag_chain
-from evolution_api import send_whatsapp_message
+from core.chains import get_conversational_rag_chain
+from core.evolution_api import send_whatsapp_message
 
 
 app = FastAPI()

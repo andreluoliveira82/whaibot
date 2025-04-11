@@ -4,11 +4,11 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 # from langchain_openai import ChatOpenAI
 from langchain_groq import ChatGroq
 
-from memory import get_session_history
-from prompts import contextualize_prompt, qa_prompt
+from core.memory import get_session_history
+from core.prompts import contextualize_prompt, qa_prompt
 # from settings import OPENAI_MODEL_NAME, OPENAI_MODEL_TEMPERATURE
-from settings import GROQ_MODEL_NAME, GROQ_API_KEY, MODEL_TEMPERATURE
-from vectorstore import get_vectorstore
+from core.settings import GROQ_MODEL_NAME, GROQ_API_KEY, MODEL_TEMPERATURE
+from core.vectorstore import get_vectorstore
 
 
 def get_rag_chain():

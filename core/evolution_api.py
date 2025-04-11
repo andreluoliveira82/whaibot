@@ -1,5 +1,5 @@
 import requests
-from settings import (
+from core.settings import (
     EVOLUTION_API_URL,
     EVOLUTION_INSTANCE_NAME,
     EVOLUTION_AUTHENTICATION_API_KEY,
