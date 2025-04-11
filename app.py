@@ -20,9 +20,8 @@ async def webhook(request: Request) -> dict:
     received_message = data.get("data").get("message").get("conversation")
 
     # ignore self messages (messages sent from me)
-    if data.get("data").get("key", {}).get("fromMe"):
+    if data.get("data").get("key").get("fromMe"):
         return {"status": "ignored", "message": "Self message ignored"}
-
 
     # check if chat_id and message are not None
     # and chat_id does not contain '@g.us' (group chat)
