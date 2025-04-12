@@ -6,7 +6,7 @@ from langchain_groq import ChatGroq
 
 from core.memory import get_session_history
 from core.prompts import contextualize_prompt, qa_prompt
-# from settings import OPENAI_MODEL_NAME, OPENAI_MODEL_TEMPERATURE
+# from core.settings import OPENAI_MODEL_NAME, OPENAI_MODEL_TEMPERATURE
 from core.settings import GROQ_MODEL_NAME, GROQ_API_KEY, MODEL_TEMPERATURE
 from core.vectorstore import get_vectorstore
 

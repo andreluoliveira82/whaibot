@@ -1,17 +1,12 @@
 services:
   evolution-api:
-    container_name: evolution-api
+    container_name: evolution_api
     image: atendai/evolution-api:v2.1.1
     restart: always
     ports:
       - "8080:8080"
     env_file:
       - .env
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
     volumes:
       - evolution_instances:/evolution/instances
     depends_on:
@@ -26,11 +21,6 @@ services:
       - 5432:5432
     environment:
       - POSTGRES_PASSWORD=postgres
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 5s
-      timeout: 3s
-      retries: 3
     volumes:
       - postgres_data:/var/lib/postgresql/data
     expose:
@@ -44,11 +34,6 @@ services:
       - redis:/data
     ports:
       - 6379:6379
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 5s
-      timeout: 3s
-      retries: 3
   bot:
     build: .
     container_name: bot
@@ -57,17 +42,9 @@ services:
     env_file:
       - .env
     depends_on:
-      postgres:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-      evolution-api:
-        condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          cpus: '2'
-          memory: 1G
+      - postgres
+      - redis
+      - evolution-api
     restart: always
     volumes:
       - ./vectorstore:/app/vectorstore
