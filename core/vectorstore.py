@@ -2,11 +2,15 @@ import os
 import shutil
 from langchain_community.document_loaders import PyPDFLoader, TextLoader
 from langchain_chroma import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-# from langchain_openai import OpenAIEmbeddings
 
-from core.settings import VECTOR_STORE_PATH, RAG_FILES_DIR
+# from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_openai import OpenAIEmbeddings
+
+from core.settings import (
+    VECTOR_STORE_PATH,
+    RAG_FILES_DIR,
+)
 
 
 def load_documents() -> list:
@@ -47,9 +51,7 @@ def load_documents() -> list:
 
 def get_vectorstore() -> Chroma:
     # usando o embeddings do groq AI
-    embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-mpnet-base-v2"
-    )
+    embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
     # Verifica se há novos arquivos para processar
     has_new_files = any(f.endswith((".pdf", ".txt")) for f in os.listdir(RAG_FILES_DIR))

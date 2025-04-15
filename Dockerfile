@@ -1,4 +1,4 @@
-FROM python:3.13 as builder
+FROM python:3.13
 
 WORKDIR /app
 
@@ -7,14 +7,6 @@ RUN apt-get update
 COPY requirements.txt .
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
-
-# Estágio final
-FROM python:3.13-slim
-
-WORKDIR /app
-
-# Copiar as dependências instaladas do estágio builder
-COPY --from=builder /root/.local /root/.local
 
 # Copiar o código fonte
 COPY . .

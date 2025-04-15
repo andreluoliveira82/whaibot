@@ -3,8 +3,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-# OPENAI_MODEL_NAME=os.getenv("OPENAI_MODEL_NAME")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_MODEL_NAME=os.getenv("OPENAI_MODEL_NAME")
 
 GROQ_API_KEY=os.getenv("GROQ_API_KEY")
 GROQ_MODEL_NAME=os.getenv("GROQ_MODEL_NAME")
